@@ -1,0 +1,798 @@
+/* École des Petites Pauses — handmade / school-stationery aesthetic:
+   felt pens, notebook paper, stamps. */
+
+:root {
+  --paper: #F3EBDC;
+  --card: #FAF5EA;
+  --card-alt: #FFFDF8;
+  --ink: #211E1A;
+  --ink-soft: #453F38;
+  --muted: #7A7167;
+  --muted-on-dark: #B6AB9B;
+  --muted-on-dark-2: #D8CFC2;
+  --red: #C4452F;
+  --red-logo: #E2604B;
+  --blue: #4E7FA6;
+  --green: #6E9E62;
+  --green-dark: #4C6B45;
+  --green-on-dark: #C7D8C0;
+  --green-pale: #EDF2E9;
+  --green-bright: #9FC594;
+  --yellow: #E3A92E;
+  --yellow-pale: #FDE9C9;
+  --purple: #8E5BC9;
+
+  --font-display: 'Bricolage Grotesque', sans-serif;
+  --font-body: Karla, sans-serif;
+  --font-mono: 'DM Mono', monospace;
+  --font-hand: Caveat, cursive;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  background: var(--paper);
+  color: var(--ink);
+  font-family: var(--font-body);
+}
+
+a {
+  color: var(--red);
+}
+
+a:hover {
+  color: var(--ink);
+}
+
+.page {
+  font-family: var(--font-body);
+  color: var(--ink);
+  background: var(--paper);
+  padding: clamp(14px, 3vw, 44px) clamp(10px, 3vw, 36px);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: clamp(18px, 3vw, 32px);
+}
+
+.card {
+  width: 100%;
+  max-width: 1040px;
+  background: var(--card);
+  border: 2px solid var(--ink);
+  border-radius: 3px;
+  padding: clamp(26px, 5vw, 60px);
+  box-shadow: 6px 8px 0 rgba(33, 30, 26, .14);
+  display: flex;
+  flex-direction: column;
+  gap: 26px;
+}
+
+.card--dark {
+  background: var(--ink);
+  color: var(--paper);
+}
+
+.card--green {
+  background: var(--green-dark);
+  color: var(--paper);
+}
+
+.kicker {
+  font-family: var(--font-mono);
+  font-size: 11px;
+  letter-spacing: .14em;
+  text-transform: uppercase;
+  color: var(--muted);
+}
+
+.card--dark .kicker,
+.card--green .kicker {
+  color: var(--muted-on-dark);
+}
+
+.card--green .kicker {
+  color: var(--green-on-dark);
+}
+
+h1, h2 {
+  margin: 0;
+  font-family: var(--font-display);
+  font-weight: 800;
+  letter-spacing: -0.02em;
+}
+
+h3, h4 {
+  margin: 0;
+  font-family: var(--font-display);
+  font-weight: 800;
+}
+
+/* ---------- Emploi du temps (charte) ---------- */
+
+.schedule-intro {
+  margin: 0;
+  font-size: 16px;
+  line-height: 1.6;
+  color: var(--ink-soft);
+  max-width: 58ch;
+}
+
+.schedule {
+  display: flex;
+  flex-direction: column;
+  border: 2px solid var(--ink);
+}
+
+.schedule__row {
+  display: grid;
+  grid-template-columns: 120px 1fr;
+  border-bottom: 2px solid var(--ink);
+}
+
+.schedule__row:last-child {
+  border-bottom: none;
+}
+
+.schedule__time {
+  padding: 14px;
+  font-family: var(--font-mono);
+  font-size: 11px;
+  background: var(--yellow-pale);
+  border-right: 2px solid var(--ink);
+}
+
+.schedule__desc {
+  padding: 14px;
+  font-size: 15px;
+}
+
+/* ---------- Devoirs / fiches / carnet / récompenses (liste de cartes) ---------- */
+
+.devoirs-list {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.devoir {
+  border: 2px solid var(--ink);
+  background: var(--card-alt);
+  padding: 18px 20px;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  text-decoration: none;
+  color: inherit;
+}
+
+.devoir--fait {
+  opacity: 0.6;
+}
+
+.devoir__meta {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  font-family: var(--font-mono);
+  font-size: 11px;
+  letter-spacing: .08em;
+  text-transform: uppercase;
+  color: var(--muted);
+}
+
+.devoir__eleve {
+  color: var(--blue);
+  font-weight: 500;
+}
+
+.devoir__titre {
+  margin: 0;
+  font-family: var(--font-display);
+  font-weight: 800;
+  font-size: 20px;
+}
+
+.devoir__desc {
+  margin: 0;
+  font-size: 15px;
+  line-height: 1.6;
+  color: var(--ink-soft);
+}
+
+.devoir__badge {
+  align-self: flex-start;
+  font-family: var(--font-mono);
+  font-size: 11px;
+  color: var(--green);
+  border: 1px solid var(--green);
+  border-radius: 999px;
+  padding: 2px 10px;
+}
+
+/* ---------- Messages ---------- */
+
+.message {
+  border: 2px solid var(--ink);
+  background: var(--card-alt);
+  padding: 16px 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.message__meta {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  font-family: var(--font-mono);
+  font-size: 11px;
+  letter-spacing: .08em;
+  text-transform: uppercase;
+  color: var(--muted);
+}
+
+.message__auteur {
+  color: var(--blue);
+  font-weight: 500;
+}
+
+.message__texte {
+  margin: 0;
+  font-size: 15px;
+  line-height: 1.6;
+}
+
+/* ---------- Planning ---------- */
+
+.planning {
+  display: flex;
+  flex-direction: column;
+  gap: 22px;
+}
+
+.planning-day__title {
+  font-family: var(--font-display);
+  font-weight: 800;
+  font-size: 18px;
+  margin-bottom: 10px;
+}
+
+.planning-day__rows {
+  display: flex;
+  flex-direction: column;
+  border: 2px solid var(--ink);
+}
+
+.planning-row {
+  display: grid;
+  grid-template-columns: 140px 1fr auto;
+  align-items: center;
+  gap: 10px;
+  padding: 12px 14px;
+  border-bottom: 2px solid var(--ink);
+  font-size: 15px;
+}
+
+.planning-row:last-child {
+  border-bottom: none;
+}
+
+.planning-row__time {
+  font-family: var(--font-mono);
+  font-size: 12px;
+  color: var(--muted);
+}
+
+.planning-row__eleve {
+  font-family: var(--font-mono);
+  font-size: 11px;
+  letter-spacing: .06em;
+  text-transform: uppercase;
+  color: var(--blue);
+}
+
+/* ---------- Récompenses ---------- */
+
+.tally-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+  gap: 14px;
+}
+
+.tally-card {
+  border: 2px solid var(--ink);
+  background: var(--yellow-pale);
+  padding: 18px;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.tally-card__count {
+  font-family: var(--font-display);
+  font-weight: 800;
+  font-size: 34px;
+}
+
+.tally-card__eleve {
+  font-family: var(--font-mono);
+  font-size: 12px;
+  letter-spacing: .06em;
+  text-transform: uppercase;
+  color: var(--ink-soft);
+}
+
+.stamp {
+  border: 2px solid var(--ink);
+  background: var(--card-alt);
+  padding: 16px 20px;
+  display: flex;
+  gap: 16px;
+  align-items: flex-start;
+}
+
+.stamp__tampon {
+  font-size: 32px;
+  line-height: 1;
+}
+
+.stamp__body {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+/* ---------- Carnet de notes ---------- */
+
+.carnet-eleve {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+
+.carnet-eleve__nom {
+  margin: 0;
+  font-family: var(--font-display);
+  font-weight: 800;
+  font-size: 20px;
+  color: var(--blue);
+}
+
+.carnet-note {
+  font-family: var(--font-mono);
+  font-size: 11px;
+  color: var(--green);
+  border: 1px solid var(--green);
+  border-radius: 999px;
+  padding: 2px 10px;
+  text-transform: none;
+  letter-spacing: 0;
+}
+
+/* ---------- Galerie ---------- */
+
+.galerie-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+  gap: 18px;
+}
+
+.galerie-item {
+  margin: 0;
+  border: 2px solid var(--ink);
+  background: var(--card-alt);
+  display: flex;
+  flex-direction: column;
+}
+
+.galerie-item__img {
+  width: 100%;
+  aspect-ratio: 4/3;
+  object-fit: cover;
+  display: block;
+  border-bottom: 2px solid var(--ink);
+}
+
+.galerie-item__caption {
+  padding: 10px 12px;
+  font-size: 13px;
+  color: var(--ink-soft);
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.galerie-item__date {
+  font-family: var(--font-mono);
+  font-size: 10px;
+  color: var(--muted);
+}
+
+/* ---------- Espace élève ---------- */
+
+.espace-profiles {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+}
+
+.espace-profile {
+  font-family: var(--font-display);
+  font-weight: 800;
+  font-size: 16px;
+  border: 2px solid var(--ink);
+  background: var(--card-alt);
+  color: var(--ink);
+  padding: 14px 22px;
+  border-radius: 3px;
+  cursor: pointer;
+}
+
+.espace-profile--active {
+  background: var(--ink);
+  color: var(--card);
+}
+
+.espace-login {
+  max-width: 280px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.espace-balance {
+  border: 2px solid var(--ink);
+  background: var(--green-pale);
+  padding: 18px 22px;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.espace-balance__label {
+  font-family: var(--font-mono);
+  font-size: 11px;
+  letter-spacing: .06em;
+  text-transform: uppercase;
+  color: var(--green-dark);
+}
+
+.espace-balance__value {
+  font-family: var(--font-display);
+  font-weight: 800;
+  font-size: 30px;
+  color: var(--green-dark);
+}
+
+.espace-charge__montant {
+  margin: 0;
+  font-family: var(--font-mono);
+  font-size: 16px;
+  color: var(--ink-soft);
+}
+
+.espace-charge__actions {
+  display: flex;
+  gap: 10px;
+}
+
+/* ---------- Cartes de cantine ---------- */
+
+.cantine-cards {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  gap: 18px;
+}
+
+.cantine-card {
+  border: 2px solid var(--ink);
+  border-radius: 12px;
+  background: linear-gradient(135deg, var(--yellow-pale), var(--card-alt));
+  padding: 18px 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 22px;
+  aspect-ratio: 16/10;
+  box-shadow: 4px 6px 0 rgba(33, 30, 26, .14);
+}
+
+.cantine-card__top {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.cantine-card__brand {
+  font-family: var(--font-display);
+  font-weight: 800;
+  font-size: 14px;
+}
+
+.cantine-card__brand2 {
+  font-family: var(--font-mono);
+  font-size: 10px;
+  letter-spacing: .1em;
+  text-transform: uppercase;
+  color: var(--muted);
+}
+
+.cantine-card__name {
+  font-family: var(--font-display);
+  font-weight: 800;
+  font-size: 18px;
+  margin-top: auto;
+}
+
+.cantine-card__number {
+  font-family: var(--font-mono);
+  font-size: 17px;
+  letter-spacing: .06em;
+}
+
+.cantine-card__bottom {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+}
+
+.cantine-card__label {
+  font-family: var(--font-mono);
+  font-size: 9px;
+  letter-spacing: .08em;
+  text-transform: uppercase;
+  color: var(--muted);
+}
+
+.cantine-card__value {
+  font-family: var(--font-mono);
+  font-size: 14px;
+}
+
+.cantine-card__value--code {
+  font-size: 20px;
+  font-weight: 500;
+  color: var(--red);
+}
+
+@media print {
+  body * {
+    visibility: hidden;
+  }
+  .cantine-cards,
+  .cantine-cards * {
+    visibility: visible;
+  }
+  .cantine-cards {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+  }
+}
+
+/* ---------- Site nav ---------- */
+
+.site-nav {
+  width: 100%;
+  max-width: 1040px;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 18px;
+  font-family: var(--font-mono);
+  font-size: 12px;
+  letter-spacing: .08em;
+  text-transform: uppercase;
+  padding: 0 clamp(10px, 3vw, 36px);
+  box-sizing: border-box;
+}
+
+.site-nav a {
+  color: var(--ink-soft);
+  text-decoration: none;
+  border-bottom: 2px solid transparent;
+  padding-bottom: 2px;
+}
+
+.site-nav a:hover {
+  color: var(--red);
+  border-bottom-color: var(--red);
+}
+
+/* ---------- Admin ---------- */
+
+.admin-header {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 14px;
+}
+
+.admin-tabs {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+.admin-tab {
+  font-family: var(--font-mono);
+  font-size: 12px;
+  letter-spacing: .06em;
+  text-transform: uppercase;
+  border: 2px solid var(--ink);
+  background: var(--card);
+  color: var(--ink);
+  padding: 8px 16px;
+  border-radius: 999px;
+  cursor: pointer;
+}
+
+.admin-tab--active {
+  background: var(--ink);
+  color: var(--card);
+}
+
+.admin-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 16px;
+}
+
+.admin-grid--2 {
+  grid-template-columns: repeat(2, minmax(200px, 1fr));
+}
+
+.admin-field {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  margin-bottom: 14px;
+}
+
+.admin-field--checkbox {
+  flex-direction: row;
+  align-items: center;
+  gap: 8px;
+}
+
+.admin-field__label {
+  font-family: var(--font-mono);
+  font-size: 11px;
+  letter-spacing: .06em;
+  text-transform: uppercase;
+  color: var(--muted);
+}
+
+.admin-field__input {
+  font-family: var(--font-body);
+  font-size: 15px;
+  padding: 8px 10px;
+  border: 1.5px solid #C9BCA6;
+  border-radius: 3px;
+  background: var(--card-alt);
+  color: var(--ink);
+}
+
+.admin-field__input--textarea {
+  min-height: 70px;
+  resize: vertical;
+}
+
+.admin-color-row {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.admin-color-row input[type="color"] {
+  width: 40px;
+  height: 40px;
+  padding: 0;
+  border: 1.5px solid #C9BCA6;
+  border-radius: 3px;
+  background: none;
+}
+
+.admin-list {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.admin-list__row {
+  display: flex;
+  gap: 10px;
+  align-items: flex-start;
+}
+
+.admin-list__row .admin-field__input {
+  flex: 1;
+}
+
+.admin-btn {
+  font-family: var(--font-body);
+  font-weight: 600;
+  font-size: 14px;
+  padding: 8px 16px;
+  border: 2px solid var(--ink);
+  border-radius: 3px;
+  background: var(--card);
+  color: var(--ink);
+  cursor: pointer;
+  align-self: flex-start;
+}
+
+.admin-btn--primary {
+  background: var(--ink);
+  color: var(--card);
+}
+
+.admin-btn--danger {
+  border-color: var(--red);
+  color: var(--red);
+  background: var(--card);
+}
+
+.admin-btn:disabled {
+  opacity: 0.6;
+  cursor: default;
+}
+
+.admin-save-bar {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  align-items: flex-start;
+}
+
+.admin-error {
+  color: var(--red);
+  font-size: 14px;
+  margin: 0;
+}
+
+.admin-success {
+  color: var(--green);
+  font-size: 14px;
+  margin: 0;
+}
+
+.admin-divider {
+  border: none;
+  border-top: 1px dashed #C9BCA6;
+  margin: 16px 0;
+}
+
+.admin-devoir-row {
+  padding-top: 6px;
+}
+
+.admin-photo-slot {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.admin-photo-slot__preview {
+  width: 100%;
+  aspect-ratio: 1;
+  object-fit: cover;
+  border: 1.5px solid #C9BCA6;
+}
+
+.admin-photo-slot__preview--empty {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  font-family: var(--font-mono);
+  font-size: 11px;
+  color: var(--muted);
+  background: repeating-linear-gradient(45deg, #EFE7D6 0 6px, var(--card) 6px 12px);
+}

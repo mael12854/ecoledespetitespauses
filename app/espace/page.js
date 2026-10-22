@@ -8,7 +8,7 @@ const ELEVE_IDS = ["mael", "adeline", "renaud"];
 
 // Les montants sont stockés en centimes.
 function formatMontant(n) {
-  return `${(Number(n ?? 0) / 100).toLocaleString("fr-FR", { minimumFractionDigits: 2, maximumFractionDigits: 2 })} CD`;
+  return (Number(n ?? 0) / 100).toLocaleString("fr-FR", { style: "currency", currency: "EUR" });
 }
 
 function formatDate(iso) {

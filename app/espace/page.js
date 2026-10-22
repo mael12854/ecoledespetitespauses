@@ -6,8 +6,9 @@ import { getSupabase } from "../../lib/supabase-client";
 // Qui a accès à l'espace élève — liste fermée, pas basée sur le rôle en base.
 const ELEVE_IDS = ["mael", "adeline", "renaud"];
 
+// Les montants sont stockés en centimes.
 function formatMontant(n) {
-  return `${Number(n ?? 0).toLocaleString("fr-FR")} CD`;
+  return `${(Number(n ?? 0) / 100).toLocaleString("fr-FR", { minimumFractionDigits: 2, maximumFractionDigits: 2 })} CD`;
 }
 
 function formatDate(iso) {
